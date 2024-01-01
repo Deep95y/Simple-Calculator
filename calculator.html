@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  </head>
+  <body>
+    <div class = "main-container">
+    <div class = "top-container">
+       <input type = "text" id = "text" name = "display" readonly>
+    </div>
+    <div class = "bottom-container"> 
+        <div class = "column1"> 
+            <button type ="button" id = "seven"  class = "numbertext" onclick = "display('7')">7</button>
+            <button type ="button" id = "eight" class = "numbertext" onclick = "display('8')">8</button>
+            <button type ="button" id = "nine" class = "numbertext" onclick = "display('9')">9</button>
+            <button type ="button" id = "del" onclick = "deletion()">DEL</button>
+        </div>
+        <div class = "column2">
+            <button type ="button" id = "four" class = "numbertext" onclick = "display('4')">4</button>
+            <button type ="button" id = "five" class = "numbertext"onclick = "display('5')">5</button>
+            <button type ="button" id = "six" class = "numbertext" onclick = "display('6')">6</button>
+            <button type ="button" id = "plus" class = "numbertext" onclick = "display('+')">+</button>
+        </div>
+        <div class = "column3">
+            <button type ="button" id = "one" class = "numbertext" onclick = "display('1')">1</button>
+            <button type ="button" id = "two" class = "numbertext" onclick = "display('2')">2</button>
+            <button type ="button" id = "three" class = "numbertext" onclick = "display('3')">3</button>
+            <button type ="button" id = "minus" class = "numbertext" onclick = "display('-')">-</button>
+        </div>
+        <div class = "column4">
+            <button type ="button" id = "dot" class = "numbertext" onclick = "display('.')">.</button>
+            <button type ="button" id = "zero" class = "numbertext" onclick = "display('0')">0</button>
+            <button type ="button" id = "divide" class = "numbertext" onclick = "display('/')">/</button>
+            <button type ="button" id = "multiply" class = "numbertext" onclick = "display('*')">x</button>
+        </div>
+        <div class = "column5">
+            <button type ="button" id = "reset" class = "numbertext" onclick = "clearAll()">RESET</button>
+            <button type ="button" id = "equal" onclick = "displayresult()">=</button>
+        </div>
+    </div>
+    </div>
+    </body>
+
+    <script>
+      
+        function display(input) {
+          if(document.getElementById('text').value.includes("Error")) {
+            document.getElementById('text').value = '';
+          }
+           document.getElementById("text").value  += input;
+           console.log(input);
+
+      
+        }
+        function deletion() {
+          if(document.getElementById('text').value.includes("Error")) {
+            document.getElementById('text').value = '';
+          }
+          else {
+    var currentText = document.getElementById('text').value;
+    document.getElementById('text').value = currentText.slice(0, -1);
+          }
+  }
+    
+  function clearAll() {
+    document.getElementById('text').value = '';
+  }
+
+  function displayresult() {
+    try {
+      let displaytext = document.getElementById('text').value;
+
+      var resultdisplay = eval(displaytext); 
+      console.log(resultdisplay);
+      
+      document.getElementById('text').value= Math.round(resultdisplay *1000)/1000;
+      
+      
+    } catch (error) {
+      document.getElementById('text').value = 'Error';
+    }
+  }
+
+   
+  
+    
+        
+
+
+
+    </script>
+    </html>
